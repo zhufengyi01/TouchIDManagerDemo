@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "TouchIDManager.h"
 @interface ViewController ()
 
 @end
@@ -17,6 +17,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    BOOL b =  [TouchIDManager sharedManager].canUseTouchId;
+    
+    if (b) {
+        
+        [[TouchIDManager sharedManager] touchIDWithlocalizedFallbackTitle:@"123" localizedReason:@"456" success:^(BOOL success, NSError *error) {
+            
+        }];
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning {
